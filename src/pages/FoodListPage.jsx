@@ -12,9 +12,8 @@ const FoodListPage = () => {
         const response = await fetch("http://localhost:5000/api/foods");
         const result = await response.json();
 
-        console.log("API response:", result); // Check this in your browser console
+        console.log("API response:", result);
 
-        // If the API returns an object like { data: [...] }
         const foodsArray = Array.isArray(result) ? result : result.data;
 
         setFoodItems(foodsArray || []);
