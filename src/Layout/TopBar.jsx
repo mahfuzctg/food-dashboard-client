@@ -2,7 +2,7 @@ import React from "react";
 
 const TopBar = () => {
   return (
-    <header className="flex items-center justify-between px-4 py-2 bg-white shadow-sm w-full">
+    <header className="flex items-center justify-between px-4 py-2 bg-white  w-full">
       <div className="flex items-center gap-2">
         <i className="fas fa-bars text-gray-500"></i>
         <div className="relative">
