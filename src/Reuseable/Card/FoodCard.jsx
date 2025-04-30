@@ -1,17 +1,26 @@
 import React from "react";
+import { FaBalanceScale, FaDollarSign } from "react-icons/fa"; // Import icons from react-icons
 
 const FoodCard = ({ item }) => {
   return (
-    <div className="bg-white border border-orange-100 rounded-xl shadow-sm hover:shadow-md transition">
+    <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 p-2">
       <img
         src={item.image}
         alt={item.name}
-        className="w-full h-40 object-cover rounded-t-xl"
+        className="w-full h-48 object-cover rounded-t-xl"
       />
       <div className="p-4">
-        <h3 className="text-lg font-bold text-orange-500 mb-1">{item.name}</h3>
-        <p className="text-gray-700 mb-1">💰 Price: ${item.price}</p>
-        <p className="text-gray-700">⚖️ Amount: {item.amount}</p>
+        <h3 className="text-xl font-semibold text-orange-600 mb-2 truncate">
+          {item.name}
+        </h3>
+        <div className="flex items-center text-gray-700 mb-2">
+          <FaDollarSign className="text-orange-500 mr-2" />
+          <p className="text-lg font-medium">${item.price}</p>
+        </div>
+        <div className="flex items-center text-gray-700">
+          <FaBalanceScale className="text-orange-500 mr-2" />
+          <p className="text-md">{item.amount} units</p>
+        </div>
       </div>
     </div>
   );

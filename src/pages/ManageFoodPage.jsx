@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CreateForm from "../form/CreateForm";
+import UpdateForm from "../form/UpdateForm";
 import UpdateCard from "../Reuseable/Card/UpdateCard";
 
 const ManageFoodPage = () => {
@@ -7,6 +8,8 @@ const ManageFoodPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showCreateForm, setShowCreateForm] = useState(false); // State to control form visibility
+  const [showUpdateForm, setShowUpdateForm] = useState(false); // State to control update form visibility
+  const [selectedItem, setSelectedItem] = useState(null); // State to store the item to be updated
 
   // Fetch food data
   useEffect(() => {
@@ -27,9 +30,9 @@ const ManageFoodPage = () => {
     fetchFoods();
   }, []);
 
-  const handleUpdate = (item) => {
-    console.log("Updating food item:", item);
-    // Implement your update logic here
+  const handleUpdateClick = (item) => {
+    setSelectedItem(item); // Set the item to be updated
+    setShowUpdateForm(true); // Show the UpdateForm as a modal
   };
 
   const handleDelete = async (item) => {
@@ -51,6 +54,36 @@ const ManageFoodPage = () => {
     }
   };
 
+  // Close the UpdateForm modal
+  const closeUpdateForm = () => {
+    setShowUpdateForm(false);
+    setSelectedItem(null);
+  };
+
+  // Handle updating the item
+  const handleUpdateSubmit = async (id, updatedData) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/foods/${id}`, {
+        method: "PUT",
+        body: updatedData, // Send FormData for image and other fields
+      });
+
+      if (response.ok) {
+        const updatedFood = await response.json();
+        setFoodItems((prevItems) =>
+          prevItems.map((item) =>
+            item._id === updatedFood.data._id ? updatedFood.data : item
+          )
+        );
+        closeUpdateForm(); // Close the modal after update
+      } else {
+        setError("Failed to update the food item");
+      }
+    } catch (err) {
+      setError("Error updating the food item");
+    }
+  };
+
   return (
     <div className="max-w-5xl mx-auto py-8">
       {/* "Create Products" Button */}
@@ -69,6 +102,19 @@ const ManageFoodPage = () => {
       {/* Show CreateForm if the state is true */}
       {showCreateForm && <CreateForm />}
 
+      {/* Modal for UpdateForm */}
+      {showUpdateForm && selectedItem && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-xl shadow-lg max-w-lg w-full">
+            <UpdateForm
+              item={selectedItem}
+              onClose={closeUpdateForm}
+              onUpdate={handleUpdateSubmit} // Pass the update handler
+            />
+          </div>
+        </div>
+      )}
+
       {loading && <p className="text-center text-gray-500">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
 
@@ -78,7 +124,7 @@ const ManageFoodPage = () => {
             <UpdateCard
               key={item._id || item.id}
               item={item}
-              onUpdate={handleUpdate}
+              onUpdateClick={handleUpdateClick} // Pass the update click handler
               onDelete={handleDelete}
             />
           ))}

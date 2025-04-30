@@ -1,17 +1,12 @@
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 
-const UpdateCard = ({ item, onUpdate, onDelete }) => {
-  // Check if item is available
-  if (!item) {
-    return <div>Loading...</div>;
-  }
-
+const UpdateCard = ({ item, onUpdateClick, onDelete }) => {
   return (
     <div className="bg-white border border-orange-100 rounded-xl shadow-sm hover:shadow-md transition">
       <img
-        src={item.image}
-        alt={item.name}
+        src={item?.image}
+        alt={item?.name}
         className="w-full h-40 object-cover rounded-t-xl"
       />
       <div className="p-4">
@@ -22,7 +17,7 @@ const UpdateCard = ({ item, onUpdate, onDelete }) => {
       <div className="flex justify-between items-center p-4">
         {/* Update Icon */}
         <button
-          onClick={() => onUpdate(item)}
+          onClick={() => onUpdateClick(item)}
           className="text-green-600 hover:text-green-500 transition"
         >
           <MdEdit size={24} />
