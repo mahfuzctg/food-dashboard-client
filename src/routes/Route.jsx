@@ -5,7 +5,7 @@ import SummaryPage from "../pages/SummaryPage";
 
 const RoutesConfig = [
   { path: "/dashboard", component: DashboardLayout },
-  { path: "/manage-food", component: FoodListPage },
+  { path: "/view", component: FoodListPage },
   { path: "/summary", component: SummaryPage },
   { path: "/manage", component: ManageFoodPage },
 ];

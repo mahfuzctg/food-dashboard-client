@@ -11,10 +11,10 @@ const Sidebar = () => {
           <FaHome /> Dashboard
         </Link>
         <Link
-          to="/manage-food"
+          to="/view"
           className="flex items-center gap-3 hover:text-orange-500"
         >
-          <FaUtensils /> Manage Items
+          <FaUtensils /> View
         </Link>
         <Link
           to="/summary"

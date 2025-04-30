@@ -5,7 +5,7 @@ import TopBar from "./TopBar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex h-screen bg-gray-500">
+    <div className="flex h-screen">
       {/* Sidebar */}
       <Sidebar />
 
