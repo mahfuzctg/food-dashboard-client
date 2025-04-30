@@ -4,7 +4,9 @@ import Dashboard from "./Layout/DashboardLayout";
 function App() {
   return (
     <Router>
-      <Dashboard />
+      <>
+        <Dashboard />
+      </>
     </Router>
   );
 }
