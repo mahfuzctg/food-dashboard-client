@@ -21,12 +21,9 @@ const DashboardLayout = () => {
 
       {/* Main Content Area */}
       <div className="flex-1 lg:ml-1/4 flex flex-col">
-        {/* Topbar with Toggle Button */}
         <TopBar toggleSidebar={toggleSidebar} />
 
-        {/* Route Content will be rendered here */}
         <main className="flex-1 p-4 lg:p-6 overflow-auto">
-          {/* This Outlet will render the matched route's component */}
           <Outlet />
         </main>
       </div>

@@ -1,44 +1,34 @@
 import React from "react";
-import { MdDelete, MdEdit } from "react-icons/md"; // For edit and delete icons
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const UpdateCard = ({ item, onUpdateClick, onDelete }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 p-4">
-      <img
-        src={item?.image}
-        alt={item?.name}
-        className="w-full h-48 object-cover rounded-t-xl"
-      />
-      <div className="p-4">
-        <h3 className="text-xl font-semibold text-orange-600 mb-2 truncate">
-          {item.name}
-        </h3>
-        <div className="flex items-center text-gray-700 mb-2">
-          <span className="text-orange-500 mr-2">💰</span>
-          <p className="text-lg font-medium">${item.price}</p>
-        </div>
-        <div className="flex items-center text-gray-700">
-          <span className="text-orange-500 mr-2">⚖️</span>
-          <p className="text-md">{item.amount} units</p>
-        </div>
-      </div>
-      <div className="flex justify-between items-center p-4">
-        {/* Update Icon */}
+    <tr className="border-b hover:bg-gray-50">
+      <td className="p-4">
+        <img
+          src={item?.image}
+          alt={item?.name}
+          className="w-24 h-24 object-cover rounded"
+        />
+      </td>
+      <td className="p-4 font-semibold text-orange-600">{item.name}</td>
+      <td className="p-4 text-gray-700 text-lg font-medium">${item.price}</td>
+      <td className="p-4 text-gray-700">{item.amount} units</td>
+      <td className="p-4 flex gap-4 justify-center">
         <button
           onClick={() => onUpdateClick(item)}
           className="text-orange-500 hover:text-orange-400 transition duration-200 transform hover:scale-110"
         >
-          <MdEdit size={26} />
+          <MdEdit size={24} />
         </button>
-        {/* Delete Icon */}
         <button
           onClick={() => onDelete(item)}
           className="text-red-600 hover:text-red-500 transition duration-200 transform hover:scale-110"
         >
-          <MdDelete size={26} />
+          <MdDelete size={24} />
         </button>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 
