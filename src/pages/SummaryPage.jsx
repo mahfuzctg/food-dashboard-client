@@ -14,6 +14,7 @@ import weekOfYear from "dayjs/plugin/weekOfYear";
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { foodData } from "../data/foodData";
+import MetricsCard from "../Reuseable/Card/MetricsCard";
 
 dayjs.extend(isoWeek);
 dayjs.extend(weekOfYear);
@@ -104,9 +105,9 @@ const SummaryPage = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 bg-white text-gray-800 rounded shadow">
-      <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-orange-500">
-        Sales Summary
+    <div className="p-4 sm:p-6 md:p-8 bg-white  text-gray-800 rounded shadow">
+      <h2 className="text-xl uppercase sm:text-2xl font-semibold mb-4 text-orange-500">
+        View Summary
       </h2>
 
       <div className="flex gap-2 sm:gap-4 mb-6">
@@ -132,19 +133,8 @@ const SummaryPage = () => {
         <Line data={chartData} options={options} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-        {metrics.map((metric) => (
-          <div
-            key={metric.name}
-            className="border border-orange-100 bg-orange-50 p-3 rounded text-center"
-          >
-            <p className="text-orange-600 font-medium">{metric.name}</p>
-            <p className="text-lg font-semibold text-orange-700">
-              {metric.value}
-            </p>
-          </div>
-        ))}
-      </div>
+      {/* Call the MetricsSection component here */}
+      <MetricsCard metrics={metrics} />
     </div>
   );
 };

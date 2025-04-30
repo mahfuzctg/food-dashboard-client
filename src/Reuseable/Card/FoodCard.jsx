@@ -2,7 +2,7 @@ import React from "react";
 import { FaBalanceScale, FaDollarSign } from "react-icons/fa";
 const FoodCard = ({ item }) => {
   return (
-    <div className="bg-white border md:w-9/12 mx-auto border-gray-200 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 p-2">
+    <div className="bg-white border md:w-[95%] mx-auto border-gray-200 rounded-xl shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 p-2">
       <img
         src={item.image}
         alt={item.name}

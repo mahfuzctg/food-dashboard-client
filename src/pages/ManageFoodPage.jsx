@@ -86,15 +86,16 @@ const ManageFoodPage = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-8">
+    <div className="w-9/12 md:max-w-5xl mx-auto py-8">
       {/* "Create Products" Button */}
       <div className="flex justify-between mb-8 items-center">
-        <h2 className="text-2xl font-semibold text-orange-600">
+        <h2 className="text-md md:text-2xl font-semibold text-orange-600 uppercase">
           Manage Food Items
         </h2>
         <button
-          onClick={() => setShowCreateForm(!showCreateForm)} // Toggle form visibility
-          className="bg-orange-600 text-white py-2 px-4 rounded-full hover:bg-orange-500 transition"
+          onClick={() => setShowCreateForm(!showCreateForm)}
+          visibility
+          className="bg-orange-600 text-white py-2 px-4 rounded-full hover:bg-orange-500 transition uppercase"
         >
           Create Products
         </button>
