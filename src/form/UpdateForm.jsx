@@ -8,7 +8,7 @@ const UpdateForm = ({ item, onClose, onUpdate }) => {
     image: item.image || "",
   });
 
-  const [selectedImage, setSelectedImage] = useState(null); // Track the selected image
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     setFormData({
@@ -43,11 +43,10 @@ const UpdateForm = ({ item, onClose, onUpdate }) => {
     updatedData.append("price", formData.price);
     updatedData.append("amount", formData.amount);
     if (selectedImage) {
-      updatedData.append("image", selectedImage); // Append the image file
+      updatedData.append("image", selectedImage);
     }
 
-    // Pass the updated data to the parent (ManageFoodPage) for API call
-    onUpdate(item._id, updatedData); // Pass the food item's ID and the form data
+    onUpdate(item._id, updatedData);
   };
 
   return (

@@ -16,7 +16,7 @@ const ReusableForm = ({
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-orange-50 px-4">
+    <div className="h-auto flex items-center justify-center bg-orange-50 px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm bg-white p-5 rounded-xl shadow-md border border-orange-100"

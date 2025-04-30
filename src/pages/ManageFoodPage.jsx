@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import CreateForm from "../form/CreateForm";
 import UpdateForm from "../form/UpdateForm";
@@ -7,9 +8,9 @@ const ManageFoodPage = () => {
   const [foodItems, setFoodItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [showCreateForm, setShowCreateForm] = useState(false); // State to control form visibility
-  const [showUpdateForm, setShowUpdateForm] = useState(false); // State to control update form visibility
-  const [selectedItem, setSelectedItem] = useState(null); // State to store the item to be updated
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // Fetch food data
   useEffect(() => {
@@ -99,8 +100,16 @@ const ManageFoodPage = () => {
         </button>
       </div>
 
-      {/* Show CreateForm if the state is true */}
-      {showCreateForm && <CreateForm />}
+      {/* Show CreateForm as Modal */}
+      {showCreateForm && (
+        <div className="fixed inset-0 bg-white bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full">
+            {" "}
+            {/* Smaller width */}
+            <CreateForm onClose={() => setShowCreateForm(false)} />
+          </div>
+        </div>
+      )}
 
       {/* Modal for UpdateForm */}
       {showUpdateForm && selectedItem && (
