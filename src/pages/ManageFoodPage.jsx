@@ -1,6 +1,6 @@
 const ManageFoodPage = () => {
   return (
-    <div className="max-w-xl">
+    <div className="max-w-xl ">
       <h2 className="text-2xl font-semibold mb-6">Add / Edit Food Item</h2>
 
       <form className="space-y-6 bg-white p-6 rounded-lg shadow">

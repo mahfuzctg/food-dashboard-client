@@ -1,7 +1,7 @@
 const FoodListPage = () => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-6">All Food Items</h2>
+      <h2 className="text-2xl font-semibold mb-6 w-[1440px]">All Food Items</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[1, 2, 3, 4, 5, 6].map((item) => (
